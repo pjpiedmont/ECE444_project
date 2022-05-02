@@ -1,0 +1,6 @@
+source "C:/Users/p-squared/esp/esp-idf/components/app_update/Kconfig.projbuild"
+source "C:/Users/p-squared/esp/esp-idf/components/bootloader/Kconfig.projbuild"
+source "C:/Users/p-squared/esp/esp-idf/components/esp_rom/Kconfig.projbuild"
+source "C:/Users/p-squared/esp/esp-idf/components/esptool_py/Kconfig.projbuild"
+source "C:/Users/p-squared/esp/esp-idf/components/partition_table/Kconfig.projbuild"
+source "C:/Users/p-squared/ECE444_project/i2c/main/Kconfig.projbuild"
