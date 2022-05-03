@@ -32,7 +32,7 @@ static const char *TAG = "rtu";
 
 static portMUX_TYPE param_lock = portMUX_INITIALIZER_UNLOCKED;
 
-static void slave_operation_func(void *arg)
+static void modbus_server(void *arg)
 {
 	mb_param_info_t reg_info; // keeps the Modbus registers access information
 
@@ -101,10 +101,12 @@ static void slave_operation_func(void *arg)
 			if (coil_reg_params.coils_port1 == 0xFF)
 				break;
 		}
+
+		vTaskDelay(100);
 	}
+
 	// Destroy of Modbus controller on alarm
 	ESP_LOGI(TAG, "Modbus controller destroyed.");
-	vTaskDelay(100);
 }
 
 // An example application of Modbus slave. It is based on freemodbus stack.
@@ -133,7 +135,8 @@ void app_main(void)
 	ESP_ERROR_CHECK(slave_init(&comm_info));
 
 	// The Modbus slave logic is located in this function (user handling of Modbus)
-	slave_operation_func(NULL);
+	modbus_server(NULL);
+	// xTaskCreate(modbus_server, "Modbus server", 2048, NULL, 2, NULL);
 
 	ESP_ERROR_CHECK(slave_destroy());
 	ESP_ERROR_CHECK(destroy_services());
