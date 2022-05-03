@@ -2034,8 +2034,36 @@
             }
         ],
         "depends_on": null,
-        "id": "modbus-example-configuration",
-        "title": "Modbus Example Configuration",
+        "id": "modbus-slave-configuration",
+        "title": "Modbus Slave Configuration",
+        "type": "menu"
+    },
+    {
+        "children": [
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "GPIO number for I2C Master clock line.",
+                "id": "I2C_MASTER_SCL",
+                "name": "I2C_MASTER_SCL",
+                "range": null,
+                "title": "SCL GPIO Num",
+                "type": "int"
+            },
+            {
+                "children": [],
+                "depends_on": null,
+                "help": "GPIO number for I2C Master data line.",
+                "id": "I2C_MASTER_SDA",
+                "name": "I2C_MASTER_SDA",
+                "range": null,
+                "title": "SDA GPIO Num",
+                "type": "int"
+            }
+        ],
+        "depends_on": null,
+        "id": "i2c-configuration",
+        "title": "I2C Configuration",
         "type": "menu"
     },
     {

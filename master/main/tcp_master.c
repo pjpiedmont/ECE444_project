@@ -72,22 +72,18 @@ static const char *TAG = "MASTER_TEST";
 // Each address in the table is a index of TCP slave ip address in mb_communication_info_t::tcp_ip_addr table
 enum
 {
-	MB_DEVICE_ADDR1 = 1, // Slave address 1
-	MB_DEVICE_ADDR2 = 200,
-	MB_DEVICE_ADDR3 = 35
+	MB_DEVICE_ADDR1 = 1//, // Slave address 1
+	// MB_DEVICE_ADDR2 = 200,
+	// MB_DEVICE_ADDR3 = 35
 };
 
 // Enumeration of all supported CIDs for device (used in parameter definition table)
 enum
 {
 	CID_INP_DATA_0 = 0,
-	CID_HOLD_DATA_0,
 	CID_INP_DATA_1,
-	CID_HOLD_DATA_1,
 	CID_INP_DATA_2,
-	CID_HOLD_DATA_2,
-	CID_RELAY_P1,
-	CID_RELAY_P2,
+	CID_HOLD_DATA_0,
 	CID_COUNT
 };
 
@@ -102,22 +98,15 @@ enum
 // Access Mode - can be used to implement custom options for processing of characteristic (Read/Write restrictions, factory mode values and etc).
 const mb_parameter_descriptor_t device_parameters[] = {
 	// { CID, Param Name, Units, Modbus Slave Addr, Modbus Reg Type, Reg Start, Reg Size, Instance Offset, Data Type, Data Size, Parameter Options, Access Mode}
-	{CID_INP_DATA_0, STR("Data_channel_0"), STR("Volts"), MB_DEVICE_ADDR1, MB_PARAM_INPUT, 0, 2,
-	 INPUT_OFFSET(input_data0), PARAM_TYPE_FLOAT, 4, OPTS(-10, 10, 1), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_HOLD_DATA_0, STR("Humidity_1"), STR("%rH"), MB_DEVICE_ADDR1, MB_PARAM_HOLDING, 0, 2,
-	 HOLD_OFFSET(holding_data0), PARAM_TYPE_FLOAT, 4, OPTS(0, 100, 1), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_INP_DATA_1, STR("Temperature_1"), STR("C"), MB_DEVICE_ADDR1, MB_PARAM_INPUT, 2, 2,
-	 INPUT_OFFSET(input_data1), PARAM_TYPE_FLOAT, 4, OPTS(-40, 100, 1), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_HOLD_DATA_1, STR("Humidity_2"), STR("%rH"), MB_DEVICE_ADDR2, MB_PARAM_HOLDING, 2, 2,
-	 HOLD_OFFSET(holding_data1), PARAM_TYPE_FLOAT, 4, OPTS(0, 100, 1), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_INP_DATA_2, STR("Temperature_2"), STR("C"), MB_DEVICE_ADDR2, MB_PARAM_INPUT, 4, 2,
-	 INPUT_OFFSET(input_data2), PARAM_TYPE_FLOAT, 4, OPTS(-40, 100, 1), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_HOLD_DATA_2, STR("Humidity_3"), STR("%rH"), MB_DEVICE_ADDR3, MB_PARAM_HOLDING, 4, 2,
-	 HOLD_OFFSET(holding_data2), PARAM_TYPE_FLOAT, 4, OPTS(0, 100, 1), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_RELAY_P1, STR("RelayP1"), STR("on/off"), MB_DEVICE_ADDR1, MB_PARAM_COIL, 0, 8,
-	 COIL_OFFSET(coils_port0), PARAM_TYPE_U16, 2, OPTS(BIT1, 0, 0), PAR_PERMS_READ_WRITE_TRIGGER},
-	{CID_RELAY_P2, STR("RelayP2"), STR("on/off"), MB_DEVICE_ADDR1, MB_PARAM_COIL, 8, 8,
-	 COIL_OFFSET(coils_port1), PARAM_TYPE_U16, 2, OPTS(BIT0, 0, 0), PAR_PERMS_READ_WRITE_TRIGGER}};
+	{CID_INP_DATA_0, STR("Voltage"), STR("V"), MB_DEVICE_ADDR1, MB_PARAM_INPUT, 0, 2,
+	 INPUT_OFFSET(input_data0), PARAM_TYPE_FLOAT, 4, OPTS(-32, 32, 0.004), PAR_PERMS_READ_WRITE_TRIGGER},
+	{CID_INP_DATA_1, STR("Current"), STR("mA"), MB_DEVICE_ADDR1, MB_PARAM_INPUT, 2, 2,
+	 INPUT_OFFSET(input_data1), PARAM_TYPE_FLOAT, 4, OPTS(-3276.7, 3276.7, 0.1), PAR_PERMS_READ_WRITE_TRIGGER},
+	{CID_INP_DATA_2, STR("Power"), STR("mW"), MB_DEVICE_ADDR1, MB_PARAM_INPUT, 4, 2,
+	 INPUT_OFFSET(input_data2), PARAM_TYPE_FLOAT, 4, OPTS(-104854, 104854, 0.33), PAR_PERMS_READ_WRITE_TRIGGER},
+	{CID_HOLD_DATA_0, STR("Power Threshold"), STR("mW"), MB_DEVICE_ADDR1, MB_PARAM_HOLDING, 0, 2,
+	 HOLD_OFFSET(holding_data0), PARAM_TYPE_FLOAT, 4, OPTS(-104854, 104854, 0.33), PAR_PERMS_READ_WRITE_TRIGGER}
+};
 
 // Calculate number of parameters in the table
 const uint16_t num_device_parameters = (sizeof(device_parameters) / sizeof(device_parameters[0]));

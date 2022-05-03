@@ -9,5 +9,11 @@
 	],
     "idf.portWin": "COM14",
     "idf.pythonBinPathWin": "C:\\Users\\p-squared\\.espressif\\python_env\\idf4.4_py3.8_env\\Scripts\\python.exe",
-    "idf.toolsPathWin": "C:\\Users\\p-squared\\.espressif"
+	"idf.toolsPathWin": "C:\\Users\\p-squared\\.espressif",
+	"files.associations": {
+		"modbus_params.h": "c",
+		"mbcontroller.h": "c",
+		"string.h": "c",
+		"sdkconfig.h": "c"
+	}
 }

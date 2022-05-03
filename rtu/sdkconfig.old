@@ -140,11 +140,18 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
-# Modbus Example Configuration
+# Modbus Slave Configuration
 #
 CONFIG_MB_SLAVE_ADDR=1
 # CONFIG_MB_MDNS_IP_RESOLVER is not set
-# end of Modbus Example Configuration
+# end of Modbus Slave Configuration
+
+#
+# I2C Configuration
+#
+CONFIG_I2C_MASTER_SCL=2
+CONFIG_I2C_MASTER_SDA=1
+# end of I2C Configuration
 
 #
 # Example Connection Configuration
