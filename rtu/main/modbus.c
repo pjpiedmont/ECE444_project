@@ -81,8 +81,8 @@ void setup_reg_data(void)
 	holding_reg_params.holding_data6 = 0;
 	holding_reg_params.holding_data7 = 0;
 
-	coil_reg_params.coils_port0 = 0x00;
-	coil_reg_params.coils_port1 = 0x00;
+	coil_reg_params.coils_port0 = 0x01;
+	coil_reg_params.coils_port1 = 0x01;
 
 	input_reg_params.input_data0 = 0;
 	input_reg_params.input_data1 = 0;

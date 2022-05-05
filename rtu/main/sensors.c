@@ -1,6 +1,7 @@
 #include "sensors.h"
 #include "i2c.h"
 #include "INA209.h"
+#include "MD08A.h"
 #include "esp_log.h"
 
 #include "modbus_params.h" // for modbus parameters structures
@@ -42,6 +43,7 @@ void initINA()
 
 void readINA(void *pvParameters)
 {
+	const char *TAG = "readINA";
 
 	int v_raw = 0;
 	int i_raw = 0;
@@ -65,6 +67,12 @@ void readINA(void *pvParameters)
 		input_reg_params.input_data0 = v;
 		input_reg_params.input_data1 = i;
 		input_reg_params.input_data2 = p;
+
+		// if (p > holding_reg_params.holding_data0)
+		// {
+		// 	coil_reg_params.coils_port0 = 0x00;
+		// 	coil_reg_params.coils_port1 = 0x01;
+		// }
 
 		vTaskDelay(10 / portTICK_PERIOD_MS);
 	}
