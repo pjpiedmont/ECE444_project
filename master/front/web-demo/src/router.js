@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-// import Chart from './views/Chart2.vue'
-// import Light from './views/Light.vue'
+// import Chart from './views/Chart.vue'
+import Light from './views/Light.vue'
 
 Vue.use(Router)
 
@@ -20,10 +20,10 @@ export default new Router({
     //   name: 'chart',
     //   component: Chart
     // },
-    // {
-    //   path: '/light',
-    //   name: 'light',
-    //   component: Light
-    // }
+    {
+      path: '/light',
+      name: 'light',
+      component: Light
+    }
   ]
 })

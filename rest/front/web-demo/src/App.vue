@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <!-- <v-navigation-drawer v-model="drawer" fixed app clipped>
+    <v-navigation-drawer v-model="drawer" fixed app clipped>
       <v-list dense>
         <v-list-tile to="/">
           <v-list-tile-action>
@@ -27,9 +27,9 @@
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-    </v-navigation-drawer> -->
+    </v-navigation-drawer>
     <v-toolbar color="red accent-4" dark fixed app clipped-left>
-      <!-- <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon> -->
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>ESP Home</v-toolbar-title>
     </v-toolbar>
     <v-content>

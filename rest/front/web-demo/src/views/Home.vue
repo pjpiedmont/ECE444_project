@@ -1,32 +1,40 @@
 <template>
-  <div class="example">
-    <apexcharts width="500" height="350" type="area" :options="chartOptions" :series="series"></apexcharts>
-  </div>
+  <v-container>
+    <v-layout text-xs-center wrap>
+      <v-flex xs12 sm6 offset-sm3>
+        <v-card>
+          <v-img :src="require('../assets/logo.png')" contain height="200"></v-img>
+          <v-card-title primary-title>
+            <div class="ma-auto">
+              <span class="grey--text">IDF version: {{version}}</span>
+              <br>
+              <span class="grey--text">ESP cores: {{cores}}</span>
+            </div>
+          </v-card-title>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import VueApexCharts from 'vue-apexcharts'
-
 export default {
-  name: 'Chart',
-  components: {
-    apexcharts: VueApexCharts,
-  },
-  data: function() {
+  data() {
     return {
-      chartOptions: {
-        chart: {
-          id: 'basic-bar'
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-        }
-      },
-      series: [{
-        name: 'series-1',
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
-      }]
-    }
+      version: null,
+      cores: null
+    };
   },
-}
+  mounted() {
+    this.$ajax
+      .get("/api/v1/system/info")
+      .then(data => {
+        this.version = data.data.version;
+        this.cores = data.data.cores;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+};
 </script>
